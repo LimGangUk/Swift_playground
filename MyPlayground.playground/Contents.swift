@@ -1,11 +1,17 @@
 import UIKit
 
-//var 변수 let 상수
+var myVariable = 42
+myVariable = 50
+let myConstant = 42
+//myConstant = 41
+//print(myVariable, myConstant)
+
 
 // : 타입
 let implicitInteger = 70
 let idouble = 70.0
 let eDouble: Double = 70
+
 //print(implicitInteger, idouble, eDouble)
 
 // type Convert
@@ -15,6 +21,9 @@ let widthLabel = label + String(width)
 //print(widthLabel)
 
 // String에서 \(constant or variable)
+
+
+
 let apples = 3
 let oranges = 5
 let appleSummary = "I have \(apples) apples"
@@ -22,6 +31,8 @@ let fruitSummary = "I habe \(apples + oranges) pieces of fruit."
 //print(fruitSummary)
 
 // """~"~"~"""
+
+
 let quotation = """
 I said " I have \(apples) apples."
 And then I said "I  have \(apples + oranges) pieces of
@@ -37,10 +48,8 @@ var occupations = [
     "Kaylee" : "Mechanic",
 ]
 occupations["Jayne"]="Public Relations"
-//print(fruits, occupations)
-
 fruits.append("blueberries")
-//print(fruits)
+//print(fruits,occupations)
 
 let emptyArray: [String] = []
 let emptyDictionary:[String:Float] = [:]
@@ -75,7 +84,7 @@ if let nickname { //nil 이라서 if문을 pass
 }
 
 /*
-let vegetable = "red pepper"
+let vegetable = "red pepper while"
 switch vegetable {
 case "celery":
     print("Add some raisins and make ants on a log.")
@@ -143,5 +152,26 @@ func calculateStatstics(scores: [Int]) -> (min: Int, max: Int, sum: Int) {
 }
 let statistics = calculateStatstics(scores: [5, 3, 100, 3, 9])
 //print(statistics.sum, statistics.2, statistics)
+
+//함수안에 함수 생성/호출 가능
+func returnFifteen() -> Int {
+    var y = 10
+    func add() {
+        y += 5
+    }
+    add()
+    return y
+}
+//print(returnFifteen())
+
+//함수가 함수를 반환하고 반환된 함수는 int 를 매개변수로 취하고 int를 반환
+func makeIncrementer() -> ((Int) -> Int) {
+    func addOne(number: Int)-> Int {
+        return 1 + number
+    }
+    return addOne
+}
+var incrementer =  makeIncrementer()
+//print(incrementer(7))
 
 
