@@ -96,13 +96,15 @@ default:
     print("Everything tastes good in soup.")
 }
 */
+
+
 let interestingNumbers = [
     "Prime": [2, 3, 5, 7, 11, 13],
     "Fibonacci": [1, 1, 2, 3, 5, 8],
     "Square": [1, 4, 9, 16, 25],
 ]
 var largest = 0
-for (_, numbers) in interestingNumbers {
+for (_,numbers) in interestingNumbers {
     for number in numbers {
         if number > largest {
             largest = number
@@ -130,10 +132,10 @@ for i in 0..<4 {
 
 
 //func 함수 행성 "->" 반환형 _ 로 함수 호출시 argument 생략가능
-func greet(_ person : String,_ day : String) -> String {
+func greet(person : String,day : String) -> String {
     return "Hello \(person), today is \(day)."
 }
-//print(greet("LIM", "Monday"))
+//print(greet(person: "LIM", day:"Monday"))
 
 func calculateStatstics(scores: [Int]) -> (min: Int, max: Int, sum: Int) {
     var min = scores[0]
@@ -174,4 +176,28 @@ func makeIncrementer() -> ((Int) -> Int) {
 var incrementer =  makeIncrementer()
 //print(incrementer(7))
 
+func hasAnyMatches(list: [Int], condition: (Int)-> Bool) -> Bool {
+    for item in list {
+        if condition(item){
+            return true
+        }
+    }
+    return false
+}
+func lessThanTen(number: Int) -> Bool {
+    return number < 10
+}
+var numbers = [20, 19, 7, 12]
+//print(hasAnyMatches(list: numbers, condition: lessThanTen))
 
+let i = numbers.map({ (number: Int) -> Int in
+    let result = 3 * number
+    return result
+})
+//print(i)
+
+let mappedNumbers = numbers.map({ number in 3 * number})
+//print(mappedNumbers)
+
+let sortedNumbers = numbers.sorted { $0 > $1 }
+print(sortedNumbers)
